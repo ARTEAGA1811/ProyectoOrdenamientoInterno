@@ -39,9 +39,9 @@ public class ProyectoOrdenamientoInterno {
         System.out.println("Ordenamiento por insercion: "+ Arrays.toString(vectorTres));
         
         //Ordenamiento por Metodo Quicksort
-        misMetodos.ordenamientoQuickSort(vectorCuatro, 0, vectorCuatro.length-1, "centro");
-        System.out.println("Ordenamiento Quicksort: "+ Arrays.toString(vectorCuatro));
-        
+//        misMetodos.ordenamientoQuickSort(vectorCuatro, 0, vectorCuatro.length-1, "centro");
+//        System.out.println("Ordenamiento Quicksort: "+ Arrays.toString(vectorCuatro));
+//        
         
         
         

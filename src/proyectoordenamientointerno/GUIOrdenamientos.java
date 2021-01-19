@@ -10,10 +10,10 @@ package proyectoordenamientointerno;
  *
  * @author David Arteaga (Art3-)
  */
-public class GUIOrdenamientoBurbuja extends javax.swing.JFrame {
+public class GUIOrdenamientos extends javax.swing.JFrame {
 
     /** Creates new form GUIOrdenamientoBurbuja */
-    public GUIOrdenamientoBurbuja() {
+    public GUIOrdenamientos() {
         initComponents();
         
         //Inicio de los componentes
@@ -22,9 +22,21 @@ public class GUIOrdenamientoBurbuja extends javax.swing.JFrame {
         //Se procede a analizar el tipo de ordenamiento que deseamos
         MetodosDeOrdenamiento metAOrdenar = new MetodosDeOrdenamiento();
         
-        metAOrdenar.metodoBurbuja(MenuPrincipal.vector);
+        
+        //Se analiza que tipo de ordenamiento es
+        if(MenuPrincipal.tipoDeOrdenamiento.equalsIgnoreCase("burbuja")){
+            metAOrdenar.metodoBurbuja(MenuPrincipal.vector);
+        }else if(MenuPrincipal.tipoDeOrdenamiento.equalsIgnoreCase("seleccion")){
+            metAOrdenar.ordenamientoPorSeleccion(MenuPrincipal.vector);
+        }else if(MenuPrincipal.tipoDeOrdenamiento.equalsIgnoreCase("insercion")){
+            metAOrdenar.ordenamientoPorInsercion(MenuPrincipal.vector);
+        }else{
+            metAOrdenar.ordenamientoQuickSort(MenuPrincipal.vector, 0, MenuPrincipal.vector.length-1);
+        }
+        
+        
         int tam = metAOrdenar.getGuardarOrdenamientos().size();
-            String matriz [][] = new String [tam][8];
+            String matriz [][] = new String [tam][9];
             
             for(int i = 0; i< tam; i++){
                 matriz[i][0] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[0]);
@@ -35,6 +47,13 @@ public class GUIOrdenamientoBurbuja extends javax.swing.JFrame {
                 matriz[i][5] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[5]);
                 matriz[i][6] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[6]);
                 matriz[i][7] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[7]);
+                //Analisis
+                if(i<metAOrdenar.getGuardarAnalisis().size()){
+                    matriz[i][8] = metAOrdenar.getGuardarAnalisis().get(i);
+                }else{
+                    matriz[i][8] = "Vector Ordenado";
+                }
+                
             }
             
             tableBurbuja.setModel(new javax.swing.table.DefaultTableModel(
@@ -104,6 +123,9 @@ public class GUIOrdenamientoBurbuja extends javax.swing.JFrame {
         ));
         tableBurbuja.setRowHeight(30);
         jScrollPane1.setViewportView(tableBurbuja);
+        if (tableBurbuja.getColumnModel().getColumnCount() > 0) {
+            tableBurbuja.getColumnModel().getColumn(8).setPreferredWidth(120);
+        }
 
         btnRegresarBurbuja.setText("Regresar");
         btnRegresarBurbuja.addActionListener(new java.awt.event.ActionListener() {
@@ -117,15 +139,15 @@ public class GUIOrdenamientoBurbuja extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(195, 195, 195)
+                .addContainerGap(298, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(270, 270, 270)
                 .addComponent(btnRegresarBurbuja)
                 .addGap(132, 132, 132))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,8 +157,8 @@ public class GUIOrdenamientoBurbuja extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(btnRegresarBurbuja))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,20 +188,21 @@ public class GUIOrdenamientoBurbuja extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIOrdenamientoBurbuja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIOrdenamientos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIOrdenamientoBurbuja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIOrdenamientos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIOrdenamientoBurbuja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIOrdenamientos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIOrdenamientoBurbuja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIOrdenamientos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIOrdenamientoBurbuja().setVisible(true);
+                new GUIOrdenamientos().setVisible(true);
             }
         });
     }

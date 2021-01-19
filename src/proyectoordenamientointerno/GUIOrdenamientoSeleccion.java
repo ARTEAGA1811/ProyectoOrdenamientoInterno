@@ -16,6 +16,40 @@ public class GUIOrdenamientoSeleccion extends javax.swing.JFrame {
      */
     public GUIOrdenamientoSeleccion() {
         initComponents();
+        
+        
+        //Se procede a analizar el tipo de ordenamiento que deseamos
+        MetodosDeOrdenamiento metAOrdenar = new MetodosDeOrdenamiento();
+        
+        metAOrdenar.ordenamientoPorSeleccion(MenuPrincipal.vector);
+        int tam = metAOrdenar.getGuardarOrdenamientos().size();
+            String matriz [][] = new String [tam][9];
+            
+            for(int i = 0; i< tam; i++){
+                matriz[i][0] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[0]);
+                matriz[i][1] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[1]);
+                matriz[i][2] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[2]);
+                matriz[i][3] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[3]);
+                matriz[i][4] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[4]);
+                matriz[i][5] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[5]);
+                matriz[i][6] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[6]);
+                matriz[i][7] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[7]);
+                //Analisis
+                if(i<metAOrdenar.getGuardarAnalisis().size()){
+                    matriz[i][8] = metAOrdenar.getGuardarAnalisis().get(i);
+                }else{
+                    matriz[i][8] = "Vector Ordenado";
+                }
+                
+            }
+            
+            jTableSeleccion.setModel(new javax.swing.table.DefaultTableModel(
+                matriz,
+                new String [] {
+                    "[0]", "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "Datos"
+                }
+            ));
+            
     }
 
     /**
@@ -28,26 +62,74 @@ public class GUIOrdenamientoSeleccion extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableSeleccion = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Ordenamiento por Seleccion");
 
+        jTableSeleccion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "[0]", "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "Datos"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableSeleccion);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(126, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(123, 123, 123))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(jLabel1)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -90,5 +172,7 @@ public class GUIOrdenamientoSeleccion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableSeleccion;
     // End of variables declaration//GEN-END:variables
 }

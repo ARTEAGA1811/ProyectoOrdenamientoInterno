@@ -12,7 +12,10 @@ public class MetodosDeOrdenamiento {
     
     
     private ArrayList <int[]> guardarOrdenamientos = new ArrayList<>();
+    private ArrayList <String> guardarAnalisis = new ArrayList<>();
 
+    
+    //GETTER AND SETTTER
     public ArrayList<int[]> getGuardarOrdenamientos() {
         return guardarOrdenamientos;
     }
@@ -20,6 +23,16 @@ public class MetodosDeOrdenamiento {
     public void setGuardarOrdenamientos(ArrayList<int[]> guardarOrdenamientos) {
         this.guardarOrdenamientos = guardarOrdenamientos;
     }
+
+    public ArrayList<String> getGuardarAnalisis() {
+        return guardarAnalisis;
+    }
+
+    public void setGuardarAnalisis(ArrayList<String> guardarAnalisis) {
+        this.guardarAnalisis = guardarAnalisis;
+    }
+    
+    
     
     
 
@@ -37,8 +50,14 @@ public class MetodosDeOrdenamiento {
             for (j = i+1; j < (vector.length); j++) {
                 if (vector[i] > vector[j]) {
                       intercambiar(vector, i, j);
+                      
+                      //Se guarda el nuevo cambio
                       int vecNuevo[] = vector.clone();
                       guardarOrdenamientos.add(vecNuevo);
+                      
+                      //Se guarda el analisis
+                      String miAnalisis = vector[j] + ">" + vector[i] + ": Se realiza cambio";
+                      guardarAnalisis.add(miAnalisis);
 
                 }
 
@@ -49,6 +68,11 @@ public class MetodosDeOrdenamiento {
     //METODO POR SELECCION
     public void ordenamientoPorSeleccion(int vector[]) {
     
+        //SE agrega el array a la lista.
+        int vecInicio[] = vector.clone();
+        guardarOrdenamientos.add(vecInicio);
+        
+        
         for(int i=0; i < vector.length; i++){
             int indice2 = i;
             int indiceSmall = i;
@@ -61,7 +85,17 @@ public class MetodosDeOrdenamiento {
             }
             int aux = vector[i];
             vector[i] = small;
-            vector[indiceSmall] = aux;   
+            vector[indiceSmall] = aux;  
+            
+            //Se guarda el nuevo cambio
+            int vecNuevo[] = vector.clone();
+            guardarOrdenamientos.add(vecNuevo);
+
+            //Se guarda el analisis
+            String miAnalisis = "Minimo encontrado ("+vector[i]+") desde "+"["+i+"]";
+            guardarAnalisis.add(miAnalisis);
+            
+            
         }
         
     }
@@ -69,47 +103,51 @@ public class MetodosDeOrdenamiento {
 
     //METODO POR INSERCION
     public void ordenamientoPorInsercion(int vector[]) {
-        int i, j, aux;
+        
+        //SE agrega el array a la lista.
+        int vecInicio[] = vector.clone();
+        guardarOrdenamientos.add(vecInicio);
+        
+        int i, j;
         for (i = 1; i < vector.length; i++) {
             for (j = i - 1; j >= 0; j--) {
                 if (vector[i] < vector[j]) {
-                    aux = vector[i];
-                    vector[i] = vector[j];
-                    vector[j] = aux;
+                    intercambiar(vector, i, j);
+                    
+                    
+                    
+                    
                     i -= 1;
                 }
-
+                
+                
             }
+            //Se guarda el nuevo cambio
+            int vecNuevo[] = vector.clone();
+            guardarOrdenamientos.add(vecNuevo);
+
+            //Se guarda el analisis
+            String miAnalisis = vector[j] + ">" + vector[i] + ": Se realiza cambio";
+            guardarAnalisis.add(miAnalisis);
+            
         }
 
     }
     
     //METODO QUICKSORT
-    public void ordenamientoQuickSort(int vector[],int inicio, int end, String tipoPivote){
-        int i,j, pivote, numAleatorioDelArray;
+    public void ordenamientoQuickSort(int vector[],int inicio, int end){
+        
+        //SE agrega el array a la lista.
+        int vecInicio[] = vector.clone();
+        guardarOrdenamientos.add(vecInicio);
+        
+        int i,j, pivote;
         i = inicio;
         j = end;
+     
         
-        //Se decide la posicion del pivote.
-        if(tipoPivote.equalsIgnoreCase("random")){
-            //Se crea un objerto de la clase Random, este se lo va a usar para 
-            //el pivote aleatorio.
-            Random numAleatorio = new Random();
-            //Se especifica el rango de valores aptos del n[umero aleatorio.
-            //Este rango esta influenciado por el tamano del array a analizar.
-            numAleatorioDelArray = numAleatorio.nextInt(end-inicio+1) + inicio;
-            System.out.println("numAleatorio:" + numAleatorioDelArray);
-            //Aqui se guarda el pivote aleatorio.
-            pivote = vector[numAleatorioDelArray];
-        }else if(tipoPivote.equalsIgnoreCase("inicio")){
-            pivote = vector[i];
-        }else if(tipoPivote.equalsIgnoreCase("centro")){
             int posicionCentro = (inicio + end)/2;
             pivote = vector[posicionCentro];
-        }else{
-            pivote = vector[j];
-        }
-  
         do{
             while(vector[i] < pivote){
                 i++;
@@ -119,17 +157,23 @@ public class MetodosDeOrdenamiento {
             }
             if(i<=j){
                 intercambiar(vector, i, j);
+                
+                //Se realiza el intercambio
+                //Se guarda el nuevo cambio
+                int vecNuevo[] = vector.clone();
+                guardarOrdenamientos.add(vecNuevo);
+                
                 i++;
                 j--;
             }
         }while(i<=j);
         
         if(inicio < j){
-            ordenamientoQuickSort(vector, inicio, j, tipoPivote);
+            ordenamientoQuickSort(vector, inicio, j);
         }
         
         if(i < end){
-            ordenamientoQuickSort(vector, i, end, tipoPivote);
+            ordenamientoQuickSort(vector, i, end);
         }
         
     }

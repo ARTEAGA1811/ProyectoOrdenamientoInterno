@@ -12,6 +12,7 @@ import java.util.Random;
 public class MenuPrincipal extends javax.swing.JFrame {
 
     public static int vector [] = new int[8];
+    public static String tipoDeOrdenamiento = "";
 
     
     //GETTER AND SETTER
@@ -97,7 +98,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         btnGroupTipos.add(rbtnBurbuja);
-        rbtnBurbuja.setSelected(true);
         rbtnBurbuja.setText("Burbuja");
         rbtnBurbuja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -364,14 +364,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
   
         this.setVisible(false);
+        GUIOrdenamientos guiMisOrdenamientos = new GUIOrdenamientos();
+        guiMisOrdenamientos.setVisible(true);
         if(rbtnBurbuja.isSelected()){
-            
-            GUIOrdenamientoBurbuja guiBurbuja = new GUIOrdenamientoBurbuja();
-            guiBurbuja.setVisible(true);     
-            
+            tipoDeOrdenamiento = "burbuja";       
         }
         if(rbtnSeleccion.isSelected()){
-            
+            tipoDeOrdenamiento = "seleccion";
+        }
+        if(rbtnInsercion.isSelected()){
+            tipoDeOrdenamiento = "insercion";
+        }
+        if(rbtnQuicksort.isSelected()){
+            tipoDeOrdenamiento = "quicksort";
         }
         
   
