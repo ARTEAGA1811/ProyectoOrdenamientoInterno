@@ -11,7 +11,18 @@ import java.util.Random;
 
 public class MenuPrincipal extends javax.swing.JFrame {
 
-    private int vector [] = new int[8];
+    public static int vector [] = new int[8];
+
+    
+    //GETTER AND SETTER
+    public int[] getVector() {
+        return vector;
+    }
+
+    public void setVector(int[] vector) {
+        this.vector = vector;
+    }
+    
     
     
     
@@ -392,38 +403,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
             int a = Integer.parseInt(vectorDestring[i]);
             vector[i] = a;
         }
-        
-        
-        
-        //Se procede a analizar el tipo de ordenamiento que deseamos
-        MetodosDeOrdenamiento metAOrdenar = new MetodosDeOrdenamiento();
-        //this.setVisible(false);
+  
+        this.setVisible(false);
         if(rbtnBurbuja.isSelected()){
-            metAOrdenar.metodoBurbuja(vector);
-            //UIOrdenamientoBurbuja guiBurbuja = new GUIOrdenamientoBurbuja();
-            //guiBurbuja.setVisible(true);
             
-            int tam = metAOrdenar.getGuardarOrdenamientos().size();
-            String matriz[][] = new String [tam][8];
+            GUIOrdenamientoBurbuja guiBurbuja = new GUIOrdenamientoBurbuja();
+            guiBurbuja.setVisible(true);
             
-            for(int i = 0; i< tam; i++){
-                matriz[i][0] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[0]);
-                matriz[i][1] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[1]);
-                matriz[i][2] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[2]);
-                matriz[i][3] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[3]);
-                matriz[i][4] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[4]);
-                matriz[i][5] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[5]);
-                matriz[i][6] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[6]);
-                matriz[i][7] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[7]);
-            }
             
-             tableBurbuja1.setModel(new javax.swing.table.DefaultTableModel(
-               
-            matriz,
-            new String [] {
-                "[0]", "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]"
-            }
-        ));
+            
+//            tableBurbuja1.setModel(new javax.swing.table.DefaultTableModel(
+//               
+//            matriz,
+//            new String [] {
+//                "[0]", "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]"
+//            }
+//        ));
             
             
             

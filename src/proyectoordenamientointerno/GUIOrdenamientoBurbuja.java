@@ -19,6 +19,32 @@ public class GUIOrdenamientoBurbuja extends javax.swing.JFrame {
         //Inicio de los componentes
         //Se pasan los datos en el constructor.
         
+        //Se procede a analizar el tipo de ordenamiento que deseamos
+        MetodosDeOrdenamiento metAOrdenar = new MetodosDeOrdenamiento();
+        
+        metAOrdenar.metodoBurbuja(MenuPrincipal.vector);
+        int tam = metAOrdenar.getGuardarOrdenamientos().size();
+            String matriz [][] = new String [tam][8];
+            
+            for(int i = 0; i< tam; i++){
+                matriz[i][0] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[0]);
+                matriz[i][1] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[1]);
+                matriz[i][2] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[2]);
+                matriz[i][3] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[3]);
+                matriz[i][4] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[4]);
+                matriz[i][5] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[5]);
+                matriz[i][6] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[6]);
+                matriz[i][7] = Integer.toString((metAOrdenar.getGuardarOrdenamientos().get(i))[7]);
+            }
+            
+            tableBurbuja.setModel(new javax.swing.table.DefaultTableModel(
+                matriz,
+                new String [] {
+                    "[0]", "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "Datos"
+                }
+            ));
+            
+            
     }
 
     /** This method is called from within the constructor to
