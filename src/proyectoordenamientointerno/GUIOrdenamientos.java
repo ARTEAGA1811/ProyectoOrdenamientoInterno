@@ -26,12 +26,16 @@ public class GUIOrdenamientos extends javax.swing.JFrame {
         //Se analiza que tipo de ordenamiento es
         if(MenuPrincipal.tipoDeOrdenamiento.equalsIgnoreCase("burbuja")){
             metAOrdenar.metodoBurbuja(MenuPrincipal.vector);
+            System.out.println("burbuja");
         }else if(MenuPrincipal.tipoDeOrdenamiento.equalsIgnoreCase("seleccion")){
             metAOrdenar.ordenamientoPorSeleccion(MenuPrincipal.vector);
+            System.out.println("seleccion");
         }else if(MenuPrincipal.tipoDeOrdenamiento.equalsIgnoreCase("insercion")){
             metAOrdenar.ordenamientoPorInsercion(MenuPrincipal.vector);
+            System.out.println("insercion");
         }else{
             metAOrdenar.ordenamientoQuickSort(MenuPrincipal.vector, 0, MenuPrincipal.vector.length-1);
+            System.out.println("quicksort");
         }
         
         
