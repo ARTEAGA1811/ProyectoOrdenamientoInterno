@@ -32,11 +32,11 @@ public class MetodosDeOrdenamiento {
         
         int i, j;
 
-        for (j = 0; j < (vector.length - 1); j++) {
+        for (i = 0; i < (vector.length - 1); i++) {
 
-            for (i = 0; i < (vector.length - 1); i++) {
-                if (vector[i] > vector[i + 1]) {
-                      intercambiar(vector, i, i+1);
+            for (j = i+1; j < (vector.length); j++) {
+                if (vector[i] > vector[j]) {
+                      intercambiar(vector, i, j);
                       int vecNuevo[] = vector.clone();
                       guardarOrdenamientos.add(vecNuevo);
 
