@@ -137,7 +137,7 @@ public class MetodosDeOrdenamiento {
         i = inicio;
         j = end;
 
-        String miAnalisis = "Análisis desde ["+i+"] hasta ["+j+"]";
+        
         int posicionCentro = (inicio + end) / 2;
         pivote = vector[posicionCentro];
         do {
@@ -156,8 +156,8 @@ public class MetodosDeOrdenamiento {
                 guardarOrdenamientos.add(vecNuevo);
                 
                 //Se guarda el analisis
-                miAnalisis += "\nPivote: "+pivote+"\n"+vector[i]+" >= "+ pivote
-                        +"\n"+vector[j]+" <= "+pivote;
+                String miAnalisis = "Pivote: "+pivote+" || "+vector[j]+" >= "+ pivote
+                        +" || "+vector[i]+" <= "+pivote;
                 guardarAnalisis.add(miAnalisis);
                 
                 

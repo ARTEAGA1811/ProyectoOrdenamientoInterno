@@ -38,7 +38,7 @@ public class GUIOrdenamientos extends javax.swing.JFrame {
             lblTituloGUIOrdenamientos.setText("ORDENAMIENTO POR INSERCIÓN");
             metAOrdenar.ordenamientoPorInsercion(MenuPrincipal.vector);
             //System.out.println("insercion");
-        }else{
+        }else if(MenuPrincipal.tipoDeOrdenamiento.equalsIgnoreCase("quicksort")){
             lblTituloGUIOrdenamientos.setText("ORDENAMIENTO QUICKSORT");
             metAOrdenar.ordenamientoQuickSort(MenuPrincipal.vector, 0, MenuPrincipal.vector.length-1);
             //System.out.println("quicksort");
@@ -61,17 +61,24 @@ public class GUIOrdenamientos extends javax.swing.JFrame {
                 if(i<metAOrdenar.getGuardarAnalisis().size()){
                     matriz[i][8] = metAOrdenar.getGuardarAnalisis().get(i);
                 }else{
+                    if(!MenuPrincipal.tipoDeOrdenamiento.equalsIgnoreCase("quicksort"))
                     matriz[i][8] = "Vector Ordenado";
                 }
                 
             }
             
-            tableBurbuja.setModel(new javax.swing.table.DefaultTableModel(
+            tableOrdenamientos.setModel(new javax.swing.table.DefaultTableModel(
                 matriz,
                 new String [] {
-                    "[0]", "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "Datos"
+                    "[0]", "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "Análisis"
                 }
             ));
+            tableOrdenamientos.getColumnModel().getColumn(8).setPreferredWidth(300);
+            tableOrdenamientos.getColumnModel().getColumn(8).setMinWidth(300);
+            
+           
+         
+            
        
             
             
@@ -88,7 +95,7 @@ public class GUIOrdenamientos extends javax.swing.JFrame {
 
         lblTituloGUIOrdenamientos = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableBurbuja = new javax.swing.JTable();
+        tableOrdenamientos = new javax.swing.JTable();
         btnRegresarBurbuja = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -97,9 +104,9 @@ public class GUIOrdenamientos extends javax.swing.JFrame {
         lblTituloGUIOrdenamientos.setForeground(new java.awt.Color(0, 0, 102));
         lblTituloGUIOrdenamientos.setText("ORDENAMIENTO DEL VECTOR");
 
-        tableBurbuja.setAutoCreateRowSorter(true);
-        tableBurbuja.setBackground(new java.awt.Color(242, 251, 252));
-        tableBurbuja.setModel(new javax.swing.table.DefaultTableModel(
+        tableOrdenamientos.setAutoCreateRowSorter(true);
+        tableOrdenamientos.setBackground(new java.awt.Color(242, 251, 252));
+        tableOrdenamientos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -133,11 +140,23 @@ public class GUIOrdenamientos extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "[0]", "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "Datos"
+                "[0]", "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "Análisis"
             }
-        ));
-        tableBurbuja.setRowHeight(30);
-        jScrollPane1.setViewportView(tableBurbuja);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableOrdenamientos.setRowHeight(30);
+        jScrollPane1.setViewportView(tableOrdenamientos);
+        if (tableOrdenamientos.getColumnModel().getColumnCount() > 0) {
+            tableOrdenamientos.getColumnModel().getColumn(3).setResizable(false);
+            tableOrdenamientos.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         btnRegresarBurbuja.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnRegresarBurbuja.setForeground(new java.awt.Color(0, 0, 102));
@@ -152,29 +171,28 @@ public class GUIOrdenamientos extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(235, Short.MAX_VALUE)
+                .addComponent(lblTituloGUIOrdenamientos, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71))
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblTituloGUIOrdenamientos, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(160, 160, 160))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnRegresarBurbuja, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(311, 311, 311))))
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(329, 329, 329)
+                .addComponent(btnRegresarBurbuja, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(lblTituloGUIOrdenamientos)
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRegresarBurbuja, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                .addComponent(btnRegresarBurbuja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -234,7 +252,7 @@ public class GUIOrdenamientos extends javax.swing.JFrame {
     private javax.swing.JButton btnRegresarBurbuja;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTituloGUIOrdenamientos;
-    private javax.swing.JTable tableBurbuja;
+    private javax.swing.JTable tableOrdenamientos;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -116,7 +116,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(242, 251, 252));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel1.setText("||Metodos de Ordenacion Interna||");
+        jLabel1.setText("||Métodos de Ordenación Interna||");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

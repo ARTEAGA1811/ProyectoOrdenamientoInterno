@@ -23,35 +23,32 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="235" max="32767" attributes="0"/>
+              <Component id="lblTituloGUIOrdenamientos" min="-2" pref="512" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+          </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="730" max="-2" attributes="0"/>
-              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="329" max="-2" attributes="0"/>
+              <Component id="btnRegresarBurbuja" min="-2" pref="129" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="lblTituloGUIOrdenamientos" min="-2" pref="394" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnRegresarBurbuja" min="-2" pref="129" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="311" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="lblTituloGUIOrdenamientos" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="373" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnRegresarBurbuja" pref="33" max="32767" attributes="0"/>
+              <Component id="btnRegresarBurbuja" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -76,7 +73,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tableBurbuja">
+        <Component class="javax.swing.JTable" name="tableOrdenamientos">
           <Properties>
             <Property name="autoCreateRowSorter" type="boolean" value="true"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -84,15 +81,15 @@
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="9" rowCount="30">
-                <Column editable="true" title="[0]" type="java.lang.Object"/>
-                <Column editable="true" title="[1]" type="java.lang.Object"/>
-                <Column editable="true" title="[2]" type="java.lang.Object"/>
-                <Column editable="true" title="[3]" type="java.lang.Object"/>
-                <Column editable="true" title="[4]" type="java.lang.Object"/>
-                <Column editable="true" title="[5]" type="java.lang.Object"/>
-                <Column editable="true" title="[6]" type="java.lang.Object"/>
-                <Column editable="true" title="[7]" type="java.lang.Object"/>
-                <Column editable="true" title="Datos" type="java.lang.Object"/>
+                <Column editable="false" title="[0]" type="java.lang.Object"/>
+                <Column editable="false" title="[1]" type="java.lang.Object"/>
+                <Column editable="false" title="[2]" type="java.lang.Object"/>
+                <Column editable="false" title="[3]" type="java.lang.Object"/>
+                <Column editable="false" title="[4]" type="java.lang.Object"/>
+                <Column editable="false" title="[5]" type="java.lang.Object"/>
+                <Column editable="false" title="[6]" type="java.lang.Object"/>
+                <Column editable="false" title="[7]" type="java.lang.Object"/>
+                <Column editable="false" title="An&#xe1;lisis" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -112,12 +109,12 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>
