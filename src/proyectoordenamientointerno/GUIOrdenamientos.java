@@ -10,10 +10,10 @@ package proyectoordenamientointerno;
  *
  * @author David Arteaga (Art3-)
  */
-public class GUIOrdenamientosAdri extends javax.swing.JFrame {
+public class GUIOrdenamientos extends javax.swing.JFrame {
 
     /** Creates new form GUIOrdenamientoBurbuja */
-    public GUIOrdenamientosAdri() {
+    public GUIOrdenamientos() {
         initComponents();
         
         //Inicio de los componentes
@@ -26,21 +26,21 @@ public class GUIOrdenamientosAdri extends javax.swing.JFrame {
         
         
         //Se analiza que tipo de ordenamiento es, y se modifica el titulo
-        if(MenuPrincipalAdri.tipoDeOrdenamiento.equalsIgnoreCase("burbuja")){
+        if(MenuPrincipal.tipoDeOrdenamiento.equalsIgnoreCase("burbuja")){
             lblTituloGUIOrdenamientos.setText("MÉTODO BURBUJA");
-            metAOrdenar.metodoBurbuja(MenuPrincipalAdri.vector);
+            metAOrdenar.metodoBurbuja(MenuPrincipal.vector);
             //System.out.println("burbuja");
-        }else if(MenuPrincipalAdri.tipoDeOrdenamiento.equalsIgnoreCase("seleccion")){
+        }else if(MenuPrincipal.tipoDeOrdenamiento.equalsIgnoreCase("seleccion")){
             lblTituloGUIOrdenamientos.setText("ORDENAMIENTO POR SELECCIÓN");
-            metAOrdenar.ordenamientoPorSeleccion(MenuPrincipalAdri.vector);
+            metAOrdenar.ordenamientoPorSeleccion(MenuPrincipal.vector);
             //System.out.println("seleccion");
-        }else if(MenuPrincipalAdri.tipoDeOrdenamiento.equalsIgnoreCase("insercion")){
+        }else if(MenuPrincipal.tipoDeOrdenamiento.equalsIgnoreCase("insercion")){
             lblTituloGUIOrdenamientos.setText("ORDENAMIENTO POR INSERCIÓN");
-            metAOrdenar.ordenamientoPorInsercion(MenuPrincipalAdri.vector);
+            metAOrdenar.ordenamientoPorInsercion(MenuPrincipal.vector);
             //System.out.println("insercion");
         }else{
             lblTituloGUIOrdenamientos.setText("ORDENAMIENTO QUICKSORT");
-            metAOrdenar.ordenamientoQuickSort(MenuPrincipalAdri.vector, 0, MenuPrincipalAdri.vector.length-1);
+            metAOrdenar.ordenamientoQuickSort(MenuPrincipal.vector, 0, MenuPrincipal.vector.length-1);
             //System.out.println("quicksort");
         }
         
@@ -185,7 +185,7 @@ public class GUIOrdenamientosAdri extends javax.swing.JFrame {
     private void btnRegresarBurbujaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarBurbujaActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new MenuPrincipalAdri().setVisible(true);
+        new MenuPrincipal().setVisible(true);
     }//GEN-LAST:event_btnRegresarBurbujaActionPerformed
 
     /**
@@ -205,14 +205,18 @@ public class GUIOrdenamientosAdri extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIOrdenamientosAdri.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIOrdenamientos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIOrdenamientosAdri.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIOrdenamientos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIOrdenamientosAdri.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIOrdenamientos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIOrdenamientosAdri.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIOrdenamientos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -221,7 +225,7 @@ public class GUIOrdenamientosAdri extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIOrdenamientosAdri().setVisible(true);
+                new GUIOrdenamientos().setVisible(true);
             }
         });
     }
