@@ -6,15 +6,13 @@
 package proyectoordenamientointerno;
 
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Arrays;
 
 public class MetodosDeOrdenamiento {
-    
-    
-    private ArrayList <int[]> guardarOrdenamientos = new ArrayList<>();
-    private ArrayList <String> guardarAnalisis = new ArrayList<>();
 
-    
+    private ArrayList<int[]> guardarOrdenamientos = new ArrayList<>();
+    private ArrayList<String> guardarAnalisis = new ArrayList<>();
+
     //GETTER AND SETTTER
     public ArrayList<int[]> getGuardarOrdenamientos() {
         return guardarOrdenamientos;
@@ -31,33 +29,29 @@ public class MetodosDeOrdenamiento {
     public void setGuardarAnalisis(ArrayList<String> guardarAnalisis) {
         this.guardarAnalisis = guardarAnalisis;
     }
-    
-    
-    
-    
 
     //METODO BURBUJA
     public void metodoBurbuja(int vector[]) {
-        
+
         //SE agrega el array a la lista.
         int vecInicio[] = vector.clone();
         guardarOrdenamientos.add(vecInicio);
-        
+
         int i, j;
 
         for (i = 0; i < (vector.length - 1); i++) {
 
-            for (j = i+1; j < (vector.length); j++) {
+            for (j = i + 1; j < (vector.length); j++) {
                 if (vector[i] > vector[j]) {
-                      intercambiar(vector, i, j);
-                      
-                      //Se guarda el nuevo cambio
-                      int vecNuevo[] = vector.clone();
-                      guardarOrdenamientos.add(vecNuevo);
-                      
-                      //Se guarda el analisis
-                      String miAnalisis = vector[j] + ">" + vector[i] + ": Se realiza cambio";
-                      guardarAnalisis.add(miAnalisis);
+                    intercambiar(vector, i, j);
+
+                    //Se guarda el nuevo cambio
+                    int vecNuevo[] = vector.clone();
+                    guardarOrdenamientos.add(vecNuevo);
+
+                    //Se guarda el analisis
+                    String miAnalisis = vector[j] + ">" + vector[i] + ": Se realiza cambio";
+                    guardarAnalisis.add(miAnalisis);
 
                 }
 
@@ -67,118 +61,122 @@ public class MetodosDeOrdenamiento {
 
     //METODO POR SELECCION
     public void ordenamientoPorSeleccion(int vector[]) {
-    
+
         //SE agrega el array a la lista.
         int vecInicio[] = vector.clone();
         guardarOrdenamientos.add(vecInicio);
-        
-        
-        for(int i=0; i < vector.length; i++){
+
+        for (int i = 0; i < vector.length; i++) {
             int indice2 = i;
             int indiceSmall = i;
             int small = vector[i];
-            for(int c = indice2; c < vector.length; c++ ){      
-                if(small > vector[c]){
-                        small = vector[c];
-                        indiceSmall = c;
+            for (int c = indice2; c < vector.length; c++) {
+                if (small > vector[c]) {
+                    small = vector[c];
+                    indiceSmall = c;
                 }
             }
             int aux = vector[i];
             vector[i] = small;
-            vector[indiceSmall] = aux;  
-            
+            vector[indiceSmall] = aux;
+
             //Se guarda el nuevo cambio
             int vecNuevo[] = vector.clone();
             guardarOrdenamientos.add(vecNuevo);
 
             //Se guarda el analisis
-            String miAnalisis = "Minimo encontrado ("+vector[i]+") desde "+"["+i+"]";
+            String miAnalisis = "Minimo encontrado (" + vector[i] + ") desde " + "[" + i + "]";
             guardarAnalisis.add(miAnalisis);
-            
-            
-        }
-        
-    }
 
+        }
+
+    }
 
     //METODO POR INSERCION
     public void ordenamientoPorInsercion(int vector[]) {
-        
+
         //SE agrega el array a la lista.
         int vecInicio[] = vector.clone();
         guardarOrdenamientos.add(vecInicio);
-        
+
         int i, j;
         for (i = 1; i < vector.length; i++) {
             for (j = i - 1; j >= 0; j--) {
-                if (vector[i] < vector[j]) {
-                    intercambiar(vector, i, j);
-                    
-                    
-                    
-                    
-                    i -= 1;
+
+                int x = j + 1;
+                if (vector[x] < vector[j]) {
+                    intercambiar(vector, x, j);
+
+                }else{
+                    break;
                 }
-                
-                
+
             }
+
             //Se guarda el nuevo cambio
             int vecNuevo[] = vector.clone();
             guardarOrdenamientos.add(vecNuevo);
-
+            
             //Se guarda el analisis
-            String miAnalisis = vector[j] + ">" + vector[i] + ": Se realiza cambio";
+            String miAnalisis = "Se ordena hasta ["+i+"]";
             guardarAnalisis.add(miAnalisis);
+            
             
         }
 
     }
-    
+
     //METODO QUICKSORT
-    public void ordenamientoQuickSort(int vector[],int inicio, int end){
-        
+    public void ordenamientoQuickSort(int vector[], int inicio, int end) {
+
         //SE agrega el array a la lista.
         int vecInicio[] = vector.clone();
         guardarOrdenamientos.add(vecInicio);
-        
-        int i,j, pivote;
+
+        int i, j, pivote;
         i = inicio;
         j = end;
-     
-        
-            int posicionCentro = (inicio + end)/2;
-            pivote = vector[posicionCentro];
-        do{
-            while(vector[i] < pivote){
+
+        String miAnalisis = "Análisis desde ["+i+"] hasta ["+j+"]";
+        int posicionCentro = (inicio + end) / 2;
+        pivote = vector[posicionCentro];
+        do {
+            while (vector[i] < pivote) {
                 i++;
             }
-            while(vector[j] > pivote){
+            while (vector[j] > pivote) {
                 j--;
             }
-            if(i<=j){
+            if (i <= j) {
                 intercambiar(vector, i, j);
-                
+
                 //Se realiza el intercambio
                 //Se guarda el nuevo cambio
                 int vecNuevo[] = vector.clone();
                 guardarOrdenamientos.add(vecNuevo);
                 
+                //Se guarda el analisis
+                miAnalisis += "\nPivote: "+pivote+"\n"+vector[i]+" >= "+ pivote
+                        +"\n"+vector[j]+" <= "+pivote;
+                guardarAnalisis.add(miAnalisis);
+                
+                
                 i++;
                 j--;
             }
-        }while(i<=j);
-        
-        if(inicio < j){
+        } while (i <= j);
+
+        if (inicio < j) {
             ordenamientoQuickSort(vector, inicio, j);
         }
-        
-        if(i < end){
+
+        if (i < end) {
             ordenamientoQuickSort(vector, i, end);
         }
-        
+
     }
-    
-    static void intercambiar(int vector[], int i, int j){
+
+    static void intercambiar(int vector[], int i, int j) {
         int aux = vector[i];
         vector[i] = vector[j];
         vector[j] = aux;
