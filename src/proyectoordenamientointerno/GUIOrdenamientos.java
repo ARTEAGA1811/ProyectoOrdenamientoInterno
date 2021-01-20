@@ -100,16 +100,9 @@ public class GUIOrdenamientos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-<<<<<<< Updated upstream:src/proyectoordenamientointerno/GUIOrdenamientos.java
         lblTituloGUIOrdenamientos.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblTituloGUIOrdenamientos.setForeground(new java.awt.Color(0, 0, 102));
         lblTituloGUIOrdenamientos.setText("ORDENAMIENTO DEL VECTOR");
-=======
-        jLabel1.setBackground(new java.awt.Color(242, 251, 252));
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel1.setText("ORDENAMIENTO DEL VECTOR");
->>>>>>> Stashed changes:src/proyectoordenamientointerno/GUIOrdenamientoBurbuja.java
 
         tableOrdenamientos.setAutoCreateRowSorter(true);
         tableOrdenamientos.setBackground(new java.awt.Color(242, 251, 252));
